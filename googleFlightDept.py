@@ -27,12 +27,12 @@ for i in date_range(start_date, end_date):
      .find_element_by_xpath('//*[@class="gws-flights-results__dominated-toggle '
                             'flt-subhead2 gws-flights-results__collapsed"]').click())
     print('expand button pushed')
-    time.sleep(3)
+    time.sleep(5)
 
     print('scraping etd...')
     dep_arr_time = driver.find_elements_by_class_name("gws-flights-results__times")
     dep_etd_list = [departure_date.strftime("%Y-%m-%d")
-                    + '*' + v.text.replace(' h ', ':').replace(' m', '').split()[0]
+                    + ' ' + v.text.replace(' h ', ':').replace(' m', '').split()[0]
                     for v in dep_arr_time]
     print('ETD=', dep_etd_list)
 
@@ -75,7 +75,7 @@ for i in date_range(start_date, end_date):
     try:
         df = pd.DataFrame.from_dict(data, orient='index')
         df = df.transpose()
-        df.to_csv('E:\DB103RichardC\python\googleFlight\depart\google_flight_dep'
+        df.to_csv('E:\DB103RichardC\AItinery\dataHUB\googleFlight\depart\google_flight_dep'
                   + departure_date.strftime("%Y-%m-%d")
                   + '.csv', encoding='utf-8-sig', index=False)
     except:
