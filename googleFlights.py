@@ -75,7 +75,9 @@ for i in date_range(start_date, end_date):
     try:
         df = pd.DataFrame.from_dict(data, orient='index')
         df = df.transpose()
-        df.to_csv('E:\DB103RichardC\AItinery\dataHUB\googleFlight\\return\google_flight_ret' + return_date.strftime("%Y-%m-%d") + '.csv', encoding='utf-8-sig', index=False)
+        df.to_csv('E:\DB103RichardC\AItinery\dataHUB\googleFlight\\return\\'
+                  + dt.date.today().strftime("%Y-%m-%d") + '\google_flight_ret'
+                  + return_date.strftime("%Y-%m-%d") + '.csv', encoding='utf-8-sig', index=False)
     except:
         pass
     finally:
